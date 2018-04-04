@@ -13,9 +13,9 @@ class Category {
 
     @ColumnInfo
     @NonNull
-    private String name="";
+    private String name;
 
-    public void setName(@NonNull String name) {
+    public void setName(String name) {
         this.name = name;
     }
 
@@ -23,7 +23,6 @@ class Category {
         this._id = _id;
     }
 
-    @NonNull
     public String getName() {
         return name;
     }

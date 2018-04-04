@@ -13,7 +13,7 @@ public class Author {
 
     @ColumnInfo
     @NonNull
-    private String name="";
+    private String name;
 
     @ColumnInfo(name="lastName")
     private String lastname;
@@ -23,7 +23,6 @@ public class Author {
         return _id;
     }
 
-    @NonNull
     public String getName() {
         return name;
     }
@@ -36,7 +35,7 @@ public class Author {
         this._id = _id;
     }
 
-    public void setName(@NonNull String name) {
+    public void setName(String name) {
         this.name = name;
     }
 

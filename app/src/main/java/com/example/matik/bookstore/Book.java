@@ -24,25 +24,24 @@ class Book {
 
     @ColumnInfo
     @NonNull
-    private String name="";
+    private String name;
 
     @ColumnInfo(name="author")
     @NonNull
-    private Integer authorID=0;
+    private int authorID;
 
     @ColumnInfo(name = "category")
     @NonNull
-    private Integer categoryID=0;
+    private int categoryID;
 
     @ColumnInfo
     @NonNull
-    private Double price=0.0;
+    private double price;
 
-    public Integer get_id() {
+    public int get_id() {
         return _id;
     }
 
-    @NonNull
     public String getName() {
         return name;
     }
@@ -63,7 +62,7 @@ class Book {
         this._id = _id;
     }
 
-    public void setName(@NonNull String name) {
+    public void setName(String name) {
         this.name = name;
     }
 
