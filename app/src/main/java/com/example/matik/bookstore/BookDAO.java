@@ -17,7 +17,7 @@ interface BookDAO {
     @Query("SELECT * FROM book WHERE _id IN (:userIds)")
     List<Book> loadAllByIds(int[] userIds);
 
-    @Query("SELECT * FROM book WHERE category IN (:userIds)")
+    @Query("SELECT * FROM book WHERE category IN (:categoryIds)")
     List<Book> loadAllByCategories(int[] categoryIds);
 
     @Query("SELECT * FROM book WHERE author IN (:authorIds)")

@@ -2,33 +2,47 @@ package com.example.matik.bookstore;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.ForeignKey;
+import android.arch.persistence.room.Index;
 import android.arch.persistence.room.PrimaryKey;
+import android.support.annotation.NonNull;
 
-/**
- * Created by matik on 04.04.2018.
- */
-@Entity
+
+@Entity(foreignKeys = {@ForeignKey(entity = Author.class,
+        parentColumns = "_id",
+        childColumns = "author"),
+        @ForeignKey(entity = Category.class,
+                parentColumns = "_id",
+                childColumns = "category")},
+        indices = {@Index(value = {"category", "_id"}, unique = true),
+                   @Index(value = {"author", "_id"}, unique = true)}
+        )
 class Book {
 
     @PrimaryKey
     private int _id;
 
-    @ColumnInfo(name="name")
-    private String name;
+    @ColumnInfo
+    @NonNull
+    private String name="";
 
     @ColumnInfo(name="author")
-    private int authorID;
+    @NonNull
+    private Integer authorID=0;
 
     @ColumnInfo(name = "category")
-    private int categoryID;
+    @NonNull
+    private Integer categoryID=0;
 
-    @ColumnInfo(name = "price")
-    private double price;
+    @ColumnInfo
+    @NonNull
+    private Double price=0.0;
 
-    public int get_id() {
+    public Integer get_id() {
         return _id;
     }
 
+    @NonNull
     public String getName() {
         return name;
     }
@@ -49,7 +63,7 @@ class Book {
         this._id = _id;
     }
 
-    public void setName(String name) {
+    public void setName(@NonNull String name) {
         this.name = name;
     }
 
