@@ -16,6 +16,9 @@ interface AuthorDAO {
         @Query("SELECT * FROM author WHERE _id IN (:userIds)")
         List<Author> loadAllByIds(int[] userIds);
 
+        @Query("SELECT * FROM author WHERE _id = :userId")
+        Author loadById(int userId);
+
         @Query("SELECT * FROM author WHERE name LIKE :first AND "
                 + "lastName LIKE :last LIMIT 1")
         Author findByName(String first, String last);

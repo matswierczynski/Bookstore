@@ -7,22 +7,26 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import java.util.List;
 
 
 class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookViewHolder> {
+    private OnItemClicked onClick;
     private LayoutInflater layoutInflater;
+    private Context context;
+    List<Integer> bookIds;
     List<String> bookNames;
     List<Integer> bookAutors;
     List<Double>  bookPrices;
 
-    public BookAdapter(Context context, List<String> bookNames,
+    public BookAdapter(Context context, List<Integer> bookIds, List<String> bookNames,
                        List<Integer> bookAutors, List<Double> bookPrices) {
         layoutInflater=LayoutInflater.from(context);
+        this.bookIds   =bookIds;
         this.bookNames = bookNames;
         this.bookAutors = bookAutors;
         this.bookPrices = bookPrices;
+        this.context = context;
     }
 
     @Override
@@ -34,22 +38,25 @@ class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookViewHolder> {
 
     @Override
     public void onBindViewHolder(BookViewHolder holder, final int position) {
+        int imageId = context.getResources().getIdentifier(
+                "b"+String.valueOf(bookIds.get(position)),
+                "drawable", context.getPackageName());
         holder.bookName.setText(bookNames.get(position));
-        holder.bookPrice.setText(bookPrices.get(position).toString());
-        holder.bookImage.setImageResource(R.drawable.ic_launcher_background);
-        /*holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onClick.onItemClick(position);
-            }
-        });*/
-
+        holder.bookPrice.setText(String.format("%.2f", bookPrices.get(position))+"$");
+        holder.bookImage.setImageResource(imageId);
+        holder.itemView.setOnClickListener((v) ->onClick.onItemClick(position));
     }
 
     @Override
     public int getItemCount() {
         return bookNames.size();
     }
+
+    public void setOnClick(OnItemClicked onClick)
+    {
+        this.onClick=onClick;
+    }
+
 
     static class BookViewHolder extends RecyclerView.ViewHolder{
         private TextView bookName, bookPrice;
