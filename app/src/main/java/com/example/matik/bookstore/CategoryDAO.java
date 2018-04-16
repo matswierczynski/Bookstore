@@ -19,6 +19,9 @@ interface CategoryDAO {
     @Query("SELECT * FROM category WHERE name LIKE :name LIMIT 1")
     Category findByName(String name);
 
+    @Query("SELECT name FROM category WHERE _id = :id")
+    String name(int id);
+
     @Insert
     void insertAll(Category category);
 

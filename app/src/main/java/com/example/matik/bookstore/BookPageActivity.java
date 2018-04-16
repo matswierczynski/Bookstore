@@ -26,11 +26,13 @@ public class BookPageActivity extends AppCompatActivity {
                 setOnClickListener(addToCartOnClickListener);
         findViewById(R.id.bookCart).
                 setOnClickListener(cartOnClickListener);
+        refreshCartState();
     }
 
     View.OnClickListener addToCartOnClickListener =
             (v)-> {
                 CartState.getInstance().addBook(getBookIdFromExtra());
+                refreshCartState();
                 Toast.makeText(this,
                         getResources().getString(R.string.added_success).toString(),
                         Toast.LENGTH_SHORT).show();
@@ -48,7 +50,10 @@ public class BookPageActivity extends AppCompatActivity {
                bookDAO().loadById(bookId);
        Author bookAuthor = AppDatabase.getInstance(this).
                authorDAO().loadById(clickedBook.getAuthorID());
+       String categoryName = AppDatabase.getInstance(this).categoryDAO().
+               name(clickedBook.getCategoryID());
 
+       setTitle(categoryName);
         ((ImageView)findViewById(R.id.bookImage)).setImageResource(getResources().getIdentifier(
                 "b"+String.valueOf(bookId),
                 "drawable", getPackageName()));
@@ -57,6 +62,13 @@ public class BookPageActivity extends AppCompatActivity {
                 setText(bookAuthor.getName() +" "+bookAuthor.getLastname());
         ((TextView) findViewById(R.id.bookPrice)).
                 setText(String.format("%.2f", clickedBook.getPrice())+"$");
+    }
+
+    private void refreshCartState(){
+        ((TextView)findViewById(R.id.book_page_actual_price)).setText(
+                "Current cart value: "+
+        String.format("%.2f",
+                        CartState.getInstance().getAllProductsPrice(this))+ "$");
     }
 
 

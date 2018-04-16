@@ -3,8 +3,6 @@ import android.content.Context;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
 import java.util.TreeMap;
 
 class CartState {
@@ -42,7 +40,7 @@ class CartState {
         return new TreeMap<>(booksInCart);
     }
 
-    public Double getAllProductsPrice(Context context) {
+    public double getAllProductsPrice(Context context) {
         List<Double> productsPricesWithQuantity = new ArrayList<>();
         booksInCart.forEach((k, v) ->
                 productsPricesWithQuantity.add(

@@ -80,7 +80,8 @@ public class CartActivity extends AppCompatActivity
     private void refreshFromCartState(){
         booksInCart = CartState.getInstance().getAll();
         ((TextView)findViewById(R.id.cartSumOfPrices)).setText(
-                String.format("%.2f",
+                "Current cart value: "+
+        String.format("%.2f",
                         CartState.getInstance().getAllProductsPrice(this))+ "$");
     }
 
