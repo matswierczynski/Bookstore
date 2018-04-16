@@ -3,4 +3,5 @@
     <string name="sample_text">SAMPLE TEXT</string>
     <string name="added_success">Successfully added book to cart</string>
     <string name="removed_success">Successfully removed book from cart</string>
+    <string name="cart">Cart</string>
 </resources>

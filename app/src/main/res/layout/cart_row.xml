@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/cart_row"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -34,7 +33,6 @@
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:text="TextView"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/cartRowBookView"
@@ -44,12 +42,11 @@
             android:id="@+id/cartBookQuantity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
             android:layout_marginStart="8dp"
-            android:text="TextView"
             android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="@+id/cartBookIncreaseQuantity"
-            app:layout_constraintStart_toEndOf="@+id/cartBookIncreaseQuantity"
-            app:layout_constraintTop_toTopOf="@+id/cartBookIncreaseQuantity" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/cartBookDecreaseQuantity" />
 
         <TextView
             android:id="@+id/cartBookFinalPrice"
@@ -57,12 +54,9 @@
             android:layout_height="23dp"
             android:layout_marginBottom="8dp"
             android:layout_marginEnd="8dp"
-            android:layout_marginTop="16dp"
-            android:text="TextView"
             android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cartBookSinglePrice" />
+            app:layout_constraintEnd_toEndOf="parent" />
 
         <TextView
             android:id="@+id/cartBookSinglePrice"
@@ -70,7 +64,6 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:text="TextView"
             android:textSize="18sp"
             app:layout_constraintStart_toEndOf="@+id/cartRowBookView"
             app:layout_constraintTop_toBottomOf="@+id/cartBookTitle" />
@@ -81,27 +74,25 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
             android:adjustViewBounds="true"
             android:background="@null"
             android:cropToPadding="true"
             android:scaleType="centerCrop"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/cartRowBookView"
-            app:layout_constraintTop_toBottomOf="@+id/cartBookSinglePrice"
+            app:layout_constraintStart_toEndOf="@+id/cartBookQuantity"
             app:srcCompat="@drawable/ic_add_circle_outline_black_24dp" />
 
         <ImageButton
             android:id="@+id/cartBookDecreaseQuantity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
             android:layout_marginStart="8dp"
             android:adjustViewBounds="true"
             android:background="@null"
             android:cropToPadding="true"
-            app:layout_constraintBottom_toBottomOf="@+id/cartBookQuantity"
-            app:layout_constraintStart_toEndOf="@+id/cartBookQuantity"
-            app:layout_constraintTop_toTopOf="@+id/cartBookQuantity"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/cartRowBookView"
             app:srcCompat="@drawable/ic_remove_circle_outline_black_24dp" />
     </android.support.constraint.ConstraintLayout>
 
